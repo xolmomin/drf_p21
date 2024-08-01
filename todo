@@ -1,0 +1,10 @@
+category(name, slug)
+product(name,slug,price, description,discount,category,created_at, updated_at)
+
+product create uchun api
+product list uchun api
+qaytadigan natija
+
+name,slug,price, description,discount,category (id,name),created_at
+
+
