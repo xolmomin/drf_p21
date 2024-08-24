@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models import CharField, TextChoices, RESTRICT
 from django.utils.text import slugify
 
 
@@ -21,17 +20,18 @@ class Category(SlugBaseModel):
 
 
 class User(AbstractUser):
-    class Type(TextChoices):
+    class Type(models.TextChoices):
         ADMIN = 'admin', 'Admin'
         STAFF = 'staff', 'Staff'
         USER = 'user', 'User'
 
-    type = CharField(max_length=10, choices=Type.choices, default=Type.USER)
+    type = models.CharField(max_length=10, choices=Type.choices, default=Type.USER)
 
 
 class Product(SlugBaseModel):
     price = models.IntegerField()
     discount = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to='products/', blank=True)
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey('apps.Category', models.CASCADE)
     owner = models.ForeignKey('apps.User', models.SET_NULL, null=True, blank=True)

@@ -1,1 +1,35 @@
+10.10.3.63  olx (musoxon)
+10.10.3.94  olx (azizxoja)
+10.10.3.244 olx (bekzod)
+10.10.3.250 olx (elbek)
+10.10.3.106 olx (fahriddin)
+
+
+10.10.3.104 avto (doniyor)
+10.10.4.92  avto (shaxruza)
+10.10.4.20  avto (nurulla)
+10.10.4.88  avto (jasur)
+10.10.3.122 avto (salohiddin)
+
+
+10.10.3.192 uybor (miraziz)
+10.10.3.30  uybor (doston)
+10.10.3.2   uybor (sardor)
+10.10.3.148 uybor (behruz)
+10.10.3.216 uybor (botir)
+
+
+#tasks
+1. https://drawsql.app/ table larni tuzish
+2. frontchi, mobilechi
+
+pytest
+
+poetry, pipenv, virtualwrapper, venv
+
+isort
+flake8
+
+
+
 

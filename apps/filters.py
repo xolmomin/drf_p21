@@ -21,7 +21,3 @@ class ProductFilterSet(FilterSet):
     #     return queryset.annotate(name_length=Length('name')).filter(name_length__gte=value)
 
 
-# categoryni filter qilish, productlar soniga qarab
-# product filter image bor yoki yoqligiga qarab
-# product filter  3, 7, 10, 15 oxirgi yaratilgan productlarni
-

@@ -3,8 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = "django-insecure-9t+zc!pf%*c5ocnik%cn81y_yrjnu7ik*hzwwjao4!nhe=u_p+"
-SECRET_KEY = 'fkjdshfkjdsh'
+SECRET_KEY = "django-insecure-9t+zc!pf%*c5ocnik%cn81y_yrjnu7ik*hzwwjao4!nhe=u_p+"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -106,6 +105,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR / 'static')
 
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -116,17 +118,13 @@ REST_FRAMEWORK = {
     # 'DEFAULT_FILTER_BACKENDS': (
     #     'django_filters.rest_framework.DjangoFilterBackend',
     # ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ],
+    #
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.authentication.BasicAuthentication'  # username, password
-        # 'rest_framework.authentication.TokenAuthentication' # Authorization: Token b9344fa32aeb7d30e9b419dc745ed8e5ade0c78a
-        # 'rest_framework.authentication.SessionAuthentication'
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    #     # 'rest_framework.authentication.BasicAuthentication'  # username, password
+    #     'rest_framework.authentication.TokenAuthentication'
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100
 }
 
 SPECTACULAR_SETTINGS = {
@@ -135,4 +133,39 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
+    'COMPONENT_SPLIT_REQUEST': True
 }
+
+# LOGGING = {
+#     'version': 1,
+#     'filters': {
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',
+#         }
+#     },
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'filters': ['require_debug_true'],
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#             'handlers': ['console'],
+#         }
+#     }
+# }
+#
+
+# redis
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
+
+

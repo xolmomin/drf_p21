@@ -8,9 +8,9 @@ from rest_framework_simplejwt.views import (
 from apps.views import CategoryListCreateAPIView, ProductListCreateAPIView, RegisterCreateAPIView
 
 urlpatterns = [
-    path('categories', CategoryListCreateAPIView.as_view()),
-    path('products', ProductListCreateAPIView.as_view()),
-    path('register', RegisterCreateAPIView.as_view(), name='register_view'),
+    path('categories', CategoryListCreateAPIView.as_view(), name='category-list'),
+    path('products', ProductListCreateAPIView.as_view(), name='product-list'),
+    path('auth/register', RegisterCreateAPIView.as_view(), name='register'),
     path('token', obtain_auth_token, name='token_obtain_pair'),
     # path('token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
