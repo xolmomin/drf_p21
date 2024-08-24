@@ -30,6 +30,19 @@ poetry, pipenv, virtualwrapper, venv
 isort
 flake8
 
+interview 9
+
+/app/file2.txt
+/var/www/valijon.txt
+
+
+python
+postgresql
+linux cmd
+docker, docker compose
+django
+drf
+
 
 
 

@@ -7,6 +7,7 @@ from apps.tests.factories import CategoryFactory, UserFactory
 def categories():
     CategoryFactory.create_batch(50)
 
+
 @pytest.fixture
 def users():
     UserFactory.create_batch(50)
