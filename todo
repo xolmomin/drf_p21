@@ -23,7 +23,7 @@
 1. https://drawsql.app/ table larni tuzish
 2. frontchi, mobilechi
 
-pytest
+pytest (url, view)
 
 poetry, pipenv, virtualwrapper, venv
 

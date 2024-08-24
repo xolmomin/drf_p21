@@ -1,9 +1,12 @@
 import pytest
-from rest_framework.reverse import reverse_lazy
 
-from apps.models import Product, Category
+from apps.tests.factories import CategoryFactory, UserFactory
 
 
 @pytest.fixture
-def category():
-    return Category.objects.create(name='Mevalar')
+def categories():
+    CategoryFactory.create_batch(50)
+
+@pytest.fixture
+def users():
+    UserFactory.create_batch(50)

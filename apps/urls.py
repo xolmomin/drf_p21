@@ -5,9 +5,10 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from apps.views import CategoryListCreateAPIView, ProductListCreateAPIView, RegisterCreateAPIView
+from apps.views import CategoryListCreateAPIView, ProductListCreateAPIView, RegisterCreateAPIView, UserListAPIView
 
 urlpatterns = [
+    path('users', UserListAPIView.as_view(), name='users'),
     path('categories', CategoryListCreateAPIView.as_view(), name='category-list'),
     path('products', ProductListCreateAPIView.as_view(), name='product-list'),
     path('auth/register', RegisterCreateAPIView.as_view(), name='register'),
