@@ -30,11 +30,6 @@ poetry, pipenv, virtualwrapper, venv
 isort
 flake8
 
-interview 9
-
-/app/file2.txt
-/var/www/valijon.txt
-
 
 python
 postgresql
@@ -42,6 +37,21 @@ linux cmd
 docker, docker compose
 django
 drf
+
+
+
+chatgpt va AI mumkin emas
+5ta savol 20baldan o'tish bali 60 bal
+imtixon nomli project ochilsin
+ism familyani ham birorta faylga yozib qoyaylik
+gruppaga docker image manzilini yuboramiz
+
+1. history degan model ochilsin, har bir user kirgan urllarini tarixi saqlansin
+2. djangoda user modelga passport(AB1001010) ham qo'shilsin, unique ligi taminlansin
+3. djangodagi user tablega 1000ta malumot qoshilsin (factory boy orqali) va backup olinsin (postgres) komandalarini ketma ketligini yozing
+4. drf da ornatilib jwt access token bilan user malumotlari qaytadigan api chiqarilsin
+5. imtihon projectini docker hubga yuklasin
+
 
 
 
