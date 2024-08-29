@@ -1,4 +1,6 @@
-FROM python:3.11-alpine
+# FROM python:3.11-alpine - LINUX uchun
+# FROM --platform=linux/amd64 python:3.11-alpine as build  - MAC uchun
+FROM python:3.11-alpine as build
 
 WORKDIR /app
 

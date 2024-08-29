@@ -2,6 +2,7 @@ services:
   backend_service:
     build: .
     image: kholmumin/django_backend
+    platform: 'linux/amd64'
     env_file:
       - .env
     ports:
@@ -10,6 +11,7 @@ services:
       - postgres_service
 
   postgres_service:
+    image: postgres:alpine
     env_file:
       - .env
     environment:

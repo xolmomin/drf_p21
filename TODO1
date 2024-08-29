@@ -37,3 +37,26 @@ docker compose push
 
 #Homework
 docker compose ga redis,postgres,django
+
+
+ssh macbook@temur.local
+scp .env macbook@temur.local:/Users/macbook/project_test
+
+docker-compose.yaml va .env ni
+o'tkazish kk
+
+
+
+ssh
+scp
+
+docker compose build
+docker compose push
+
+docker compose up
+
+
+ssh wick@164.230.45.12:/home/wick/test_project
+
+
+scp -r ./*
