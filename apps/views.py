@@ -1,22 +1,27 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.parsers import FormParser, MultiPartParser
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.throttling import ScopedRateThrottle
+from rest_framework.filters import SearchFilter
 
-from apps.filters import ProductFilterSet
 from apps.models import Category, Product, User
-from apps.paginations import CustomCursorPagination, CustomPageNumberPagination
-from apps.serializers import CategoryModelSerializer, ProductModelSerializer, RegisterUserModelSerializer, \
-    UserModelSerializer
+from apps.paginations import CustomPageNumberPagination
+from apps.serializers import (
+    CategoryModelSerializer,
+    ProductModelSerializer,
+    RegisterUserModelSerializer,
+    UserModelSerializer,
+)
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
-class UserListAPIView(ListAPIView):
-    queryset = User.objects.all()
+class UserListAPIView(ListCreateAPIView):
+    queryset = User.objects.order_by('id')
     serializer_class = UserModelSerializer
     pagination_class = CustomPageNumberPagination
+
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
 
 
 class CategoryListCreateAPIView(ListCreateAPIView):
@@ -27,7 +32,9 @@ class CategoryListCreateAPIView(ListCreateAPIView):
 class ProductListCreateAPIView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductModelSerializer
-    permission_classes = IsAuthenticated,
+    filter_backends = [SearchFilter]
+    search_fields = ['name', 'description']
+    # permission_classes = IsAuthenticated,
 
 
 class RegisterCreateAPIView(CreateAPIView):

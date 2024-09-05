@@ -1,6 +1,8 @@
 import os.path
 from pathlib import Path
+
 from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
@@ -26,7 +28,10 @@ INSTALLED_APPS = [
     # 'rest_framework.authtoken',
 
     'django_filters',
-    'drf_spectacular',
+    'drf_spectacular'
+    ,
+    'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
 
 ]
 
@@ -125,8 +130,8 @@ REST_FRAMEWORK = {
     # ),
     #
     'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     # 'rest_framework.authentication.BasicAuthentication'  # username, password
-    #     'rest_framework.authentication.TokenAuthentication'
+        # 'rest_framework.authentication.BasicAuthentication'  # username, password
+        # 'rest_framework.authentication.TokenAuthentication'
         'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
@@ -174,3 +179,8 @@ CACHES = {
 }
 
 
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://localhost:9200'
+    },
+}

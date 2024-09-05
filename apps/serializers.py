@@ -1,8 +1,7 @@
+from apps.models import Category, Product, User
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.fields import CharField
-
-from apps.models import Category, Product, User
 
 
 class RegisterUserModelSerializer(serializers.ModelSerializer):

@@ -1,12 +1,48 @@
-docker django
-scp, ssh
+docker django ✅
+scp, ssh ✅
 
-isort
-flake8
+isort ✅
+flake8 ✅
 poetry
 pipenv
-5 minute django project
-(gitlab, github) ci/cd
+backup ✅
+5 minute django project ✅
+django signals ✅
+code coverage ✅
+drf viewset
+(gitlab, github) ci/cd ❌
+elasticsearch
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+
+
+insert into apps_product(name, slug, price, discount, description, category_id, updated_at, created_at, image)
+select md5(generate_series::text)                            as name,
+       md5(generate_series::text)                            as slug,
+       (random() * 1385)::integer * 1000 + 15000             as price,
+       (random() * 100)::integer                             as discount,
+       md5(generate_series::text)                            as description,
+       (select id
+        from apps_category
+        order by random()
+        limit 1)                                             as category_id,
+       (now() - interval '24 year' * random())::timestamptz  as updated_at,
+       (now() - interval '24 year' * random())::timestamptz as created_at,
+       ''
+from generate_series(17, 500000);
+
+
+-- 500K postgres 200ms
+-- 10mln elastic 0.1s
+
+
+websocket + pytest
+graphql
+AWS
+nginx
+
+pypi publish packages
+publish django packages
+
 
 
 DockerFile CMD
@@ -60,3 +96,30 @@ ssh wick@164.230.45.12:/home/wick/test_project
 
 
 scp -r ./*
+
+pg_restore
+pg_dump
+
+docker volume ps
+
+pg_data
+docker inspect con_id
+/var/docker/volume/data/pg_data
+
+db (sqlite, mysql, postgres, oracle)
+project
+
+media
+server (snapshot)
+
+
+
+
+
+
+
+
+
+
+
+

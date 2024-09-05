@@ -1,11 +1,11 @@
+from apps.views import (
+    CategoryListCreateAPIView,
+    ProductListCreateAPIView,
+    RegisterCreateAPIView,
+    UserListAPIView,
+)
 from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
-
-from apps.views import CategoryListCreateAPIView, ProductListCreateAPIView, RegisterCreateAPIView, UserListAPIView
 
 urlpatterns = [
     path('users', UserListAPIView.as_view(), name='users'),

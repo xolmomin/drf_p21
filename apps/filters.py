@@ -1,8 +1,6 @@
-from django.db.models import QuerySet, IntegerChoices
-from django.db.models.functions import Length
-from django_filters import FilterSet, NumberFilter, ChoiceFilter
-
-from apps.models import Product, User
+from apps.models import Product
+from django.db.models import IntegerChoices
+from django_filters import ChoiceFilter, FilterSet
 
 
 class ProductFilterSet(FilterSet):
@@ -19,5 +17,3 @@ class ProductFilterSet(FilterSet):
 
     # def get_length(self, queryset, name, value):
     #     return queryset.annotate(name_length=Length('name')).filter(name_length__gte=value)
-
-

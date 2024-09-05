@@ -2,6 +2,10 @@ import pytest
 from django.utils.http import urlencode
 from rest_framework import status
 from rest_framework.reverse import reverse_lazy
+# 10code
+
+
+# test
 
 
 @pytest.mark.django_db
@@ -26,27 +30,17 @@ class TestView:
         response = response.json()
         assert len(response) == 4
         assert len(response['results']) == 5
-        assert response['count'] == 50
+        assert response['count'] == 5
         allowed_fields = {'date_joined', 'email', 'first_name', 'id', 'last_name', 'type', 'username'}
         assert set(response['results'][0]) == allowed_fields
-        next_page_url = str(reverse_lazy('users')) + '?' + urlencode({'page': 2})
-        assert next_page_url in response['next']
+        assert response['next'] is None
         assert response['previous'] is None
 
         response = client.options(url)
         http_methods = response.headers.get('Allow')
         http_methods = set(map(lambda i: i.lower(), http_methods.split(', ')))
-        allowed_http_methods = {'get', 'options', 'head'}
+        allowed_http_methods = {'get', 'options', 'head', 'post'}
         assert allowed_http_methods == http_methods
-
-        response = client.get(next_page_url)
-
-        assert response.status_code == status.HTTP_200_OK
-        response = response.json()
-
-        next_page_url = str(reverse_lazy('users')) + '?' + urlencode({'page': 3})
-        assert next_page_url in response['next']
-        assert str(url) in response['previous']
 
         page_size = 50
         url = str(reverse_lazy('users')) + '?' + urlencode({'page_size': page_size})

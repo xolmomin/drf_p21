@@ -1,7 +1,6 @@
 from datetime import UTC
 
 import factory
-
 from apps.models import Category, User
 
 
