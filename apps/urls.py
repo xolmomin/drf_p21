@@ -1,20 +1,25 @@
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
 from rest_framework.routers import DefaultRouter
 
+from apps.schemas import schema
 from apps.views import (
     CategoryListCreateAPIView,
     ProductListCreateAPIView,
     RegisterCreateAPIView,
-    UserListAPIView, ProductDocumentViewSet,
+    UserListAPIView,
 )
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 
 router = DefaultRouter()
 
-router.register('products', ProductDocumentViewSet, 'products')
+# router.register('products', ProductDocumentViewSet, 'products')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+
+    # path('', include(router.urls)),
     path('users', UserListAPIView.as_view(), name='users'),
     path('categories', CategoryListCreateAPIView.as_view(), name='category-list'),
     path('products-postgres', ProductListCreateAPIView.as_view(), name='product-list'),

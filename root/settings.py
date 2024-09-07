@@ -28,10 +28,10 @@ INSTALLED_APPS = [
     # 'rest_framework.authtoken',
 
     'django_filters',
-    'drf_spectacular'
-    ,
-    'django_elasticsearch_dsl',
-    'django_elasticsearch_dsl_drf',
+    'drf_spectacular',
+    'graphene_django'
+    # 'django_elasticsearch_dsl',
+    # 'django_elasticsearch_dsl_drf',
 
 ]
 
@@ -180,9 +180,8 @@ CACHES = {
     }
 }
 
-
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': 'http://localhost:9200'
-    },
-}
+# ELASTICSEARCH_DSL = {
+#     'default': {
+#         'hosts': 'http://localhost:9200'
+#     },
+# }

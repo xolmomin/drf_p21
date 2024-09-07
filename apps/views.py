@@ -1,5 +1,7 @@
-from django_elasticsearch_dsl_drf.filter_backends import SearchFilterBackend, SuggesterFilterBackend
-from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
+# from re import search
+
+# from django_elasticsearch_dsl_drf.filter_backends import SearchFilterBackend, SuggesterFilterBackend
+# from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
 from rest_framework.filters import SearchFilter
 from rest_framework.generics import CreateAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
@@ -11,19 +13,19 @@ from apps.serializers import (
     CategoryModelSerializer,
     ProductModelSerializer,
     RegisterUserModelSerializer,
-    UserModelSerializer, ProductDocumentSerializer
+    UserModelSerializer
 )
 
-
-class ProductDocumentViewSet(DocumentViewSet):
-    document = ProductDocument
-    serializer_class = ProductDocumentSerializer
-
-    filter_backends = [
-        SearchFilterBackend,
-        SuggesterFilterBackend
-    ]
-    search_fields = ('name', 'description')
+#
+# class ProductDocumentViewSet(DocumentViewSet):
+#     document = ProductDocument
+#     serializer_class = ProductDocumentSerializer
+#
+#     filter_backends = [
+#         SearchFilterBackend,
+#         SuggesterFilterBackend
+#     ]
+#     search_fields = ('name', 'description')
 
 
 class UserListAPIView(ListCreateAPIView):

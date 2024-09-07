@@ -13,6 +13,8 @@ class SlugBaseModel(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.slug = slugify(self.name)
+        while self.__class__.objects.filter(slug=self.slug).exists():
+            self.slug += '1'
         super().save(force_insert, force_update, using, update_fields)
 
 
