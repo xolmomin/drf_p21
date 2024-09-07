@@ -5,7 +5,7 @@ from apps.models import Product
 
 
 @registry.register_document
-class UserDocument(Document):
+class ProductDocument(Document):
     class Index:
         name = "products"
         settings = {

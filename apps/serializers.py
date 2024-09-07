@@ -1,8 +1,21 @@
-from apps.models import Category, Product, User
 from django.contrib.auth.hashers import make_password
+from django_elasticsearch_dsl_drf.serializers import DocumentSerializer
 from rest_framework import serializers
 from rest_framework.fields import CharField
 
+from apps.documents import ProductDocument
+from apps.models import Category, Product, User
+
+
+class ProductDocumentSerializer(DocumentSerializer):
+    class Meta:
+        document = ProductDocument
+
+        fields = (
+            'id',
+            'name',
+            'description'
+        )
 
 class RegisterUserModelSerializer(serializers.ModelSerializer):
     confirm_password = CharField(write_only=True)

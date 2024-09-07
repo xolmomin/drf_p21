@@ -32,7 +32,10 @@ from generate_series(17, 500000);
 
 
 -- 500K postgres 200ms
--- 10mln elastic 0.1s
+-- 500K elastic 25ms
+
+-- 5M postgres 2s
+-- 5M elastic 25ms
 
 
 websocket + pytest
