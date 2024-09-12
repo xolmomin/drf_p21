@@ -10,23 +10,61 @@ backup ✅
 django signals ✅
 code coverage ✅
 elasticsearch ✅
-graphql
+graphql ✅
 websocket + pytest
 drf viewset
 
-REST API
-api/v1/vacancies     (listmodelserializer (id, name, first_image, price, created_at))
-api/v1/vacancies/150 (detailmodelserializer (id, name, description, all_images, price, author, created_at))
+
+gunicorn.service (xolmomin_drf_p21.service)
+nginx.conf (xolmomin_drf_p21)
 
 
-GraphQL
-/grapql
 
+gunicorn, uvicorn, uwsgi, daphne, hypercorn
 
 [if has server]:
     AWS
     nginx
+    github CI/CD
     (gitlab, github) ci/cd
 
 pypi publish packages
 publish django packages
+
+
+xolmomin_drf_p21.service
+[Unit]
+Description=DRF p21 Xolmo'min CI/CD
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/xolmomin_drf_p21
+ExecStart=/var/www/xolmomin_drf_p21/.venv/bin/gunicorn --workers 1 --bind unix:/var/www/xolmomin_drf_p21/xolmomin_drf_p21.sock root.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+/etc/nginx/sites-available
+ln -s /etc/nginx/sites-available/xolmomin_drf_p21 /etc/nginx/sites-enabled/
+
+
+xolmomin_drf_p21
+server {
+    listen       8068;
+    server_name  152.42.170.230;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location /static/ {
+        root /var/www/xolmomin_drf_p21;
+    }
+
+    location /media/ {
+        root /var/www/xolmomin_drf_p21;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/xolmomin_drf_p21/xolmomin_drf_p21.sock;
+    }
+}
