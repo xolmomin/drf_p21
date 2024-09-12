@@ -47,3 +47,5 @@ class Product(SlugBaseModel):
 #     price = models.IntegerField()
 #     deleted_at = models.DateTimeField(auto_now=True)
 #
+
+
